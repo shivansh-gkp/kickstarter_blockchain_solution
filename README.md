@@ -2,7 +2,8 @@
 After receving money in a kickstarter campaign companies often run away with the money. This smart contract uses blockchain to prevent that from happening. It gives contributer power to decide whether or not they want a particular vender or manufacturer to receve money.
 
 This contract can be tested at http://remix.ethereum.org
-Go to the website. 
+
+Go to the above link. 
 
 Copy/Paste the contract.
 
