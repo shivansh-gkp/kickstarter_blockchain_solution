@@ -13,6 +13,8 @@ contract CampaignFactory{
     }
 }
 contract Campagin{
+    mapping (address => uint) public timesrejected;
+    mapping (address => uint) public timesapproved;
     struct Request {
         string description;
         uint value;
@@ -63,7 +65,14 @@ contract Campagin{
     function finalizeRequest(uint index) public restricted{
         Request storage request= requests[index];
         require(!requests[index].complete);
+        if(request.approvalCount<(approversCount/2))
+        {
+         timesrejected[request.recipient]=++timesrejected[request.recipient];
+        }
         require(request.approvalCount>(approversCount/2));
+        
+        timesapproved[request.recipient]=++timesapproved[request.recipient];
+        
         request.recipient.transfer(request.value);
         requests[index].complete=true;
         
